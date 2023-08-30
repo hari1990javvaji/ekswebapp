@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: greet-app
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: greet-app
   ports:
     - port: 8080
       protocol: TCP
       targetPort: greet-web-svc
+      nodePort: 31000
