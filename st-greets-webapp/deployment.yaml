@@ -21,6 +21,6 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
-            name: greet-web-svc
+              name: greet-web-svc
       imagePullSecrets:
       - name: regcred
