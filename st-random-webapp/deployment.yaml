@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: random-app
+  namespace: eks-st-app
+  labels:
+    app: eks-random-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: eks-random-app
+  template:
+    metadata:
+      labels:
+        app: eks-random-app
+    spec:
+      containers:
+        - name: random-app
+          image: docker.na1.hsdp.io/devopslib/randomnumber:1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: random-web-svc
+      imagePullSecrets:
+      - name: regcred
